@@ -3,9 +3,6 @@ package torchrifle;
 import java.util.LinkedList;
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,6 +11,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemGun extends Item {
 
@@ -26,13 +25,13 @@ public class ItemGun extends Item {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void func_94581_a(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister par1IconRegister)
 	{
 		if(type == EnumItem.TORCH_RIFLE) {
-			this.iconIndex = par1IconRegister.func_94245_a("torchrifle:itemgun1");
+			this.itemIcon = par1IconRegister.registerIcon("torchrifle:itemgun1");
 		}
 		else {
-			this.iconIndex = par1IconRegister.func_94245_a("torchrifle:itemgun2");
+			this.itemIcon = par1IconRegister.registerIcon("torchrifle:itemgun2");
 		}
 	}
 
@@ -43,7 +42,7 @@ public class ItemGun extends Item {
 			list.add(Block.torchWood.blockID);
 			break;
 		case PICKAXE_RIFLE:
-			list.add(Item.pickaxeSteel.itemID);
+			list.add(Item.pickaxeIron.itemID);
 			list.add(Item.pickaxeGold.itemID);
 			list.add(Item.pickaxeWood.itemID);
 			list.add(Item.pickaxeStone.itemID);
@@ -105,7 +104,7 @@ public class ItemGun extends Item {
 			itemStack.damageItem(1, entityPlayer);
 		}
 
-		// TODO é©ìÆê∂ê¨Ç≥ÇÍÇΩÉÅÉ\ÉbÉhÅEÉXÉ^Éu
+		// TODO Ëá™ÂãïÁîüÊàê„Åï„Çå„Åü„É°„ÇΩ„ÉÉ„Éâ„Éª„Çπ„Çø„Éñ
 		return super.onItemRightClick(itemStack, world, entityPlayer);
 	}
 }

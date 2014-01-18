@@ -1,7 +1,7 @@
 package torchrifle;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
@@ -17,20 +17,20 @@ public class EntityBullet extends EntityThrowable {
 
 	public EntityBullet(World par1World, double par2, double par4, double par6) {
 		super(par1World, par2, par4, par6);
-		// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ãƒ»ã‚¹ã‚¿ãƒ–
 	}
 
-	public EntityBullet(World par1World, EntityLiving par2EntityLiving) {
-		super(par1World, par2EntityLiving);
-		// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+	public EntityBullet(World par1World, EntityLivingBase par2EntityLivingBase) {
+		super(par1World, par2EntityLivingBase);
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ãƒ»ã‚¹ã‚¿ãƒ–
 	}
 
 	public EntityBullet(World par1World) {
 		super(par1World);
-		// TODO Ž©“®¶¬‚³‚ê‚½ƒRƒ“ƒXƒgƒ‰ƒNƒ^[EƒXƒ^ƒu
+		// TODO è‡ªå‹•ç”Ÿæˆã•ã‚ŒãŸã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼ãƒ»ã‚¹ã‚¿ãƒ–
 	}
 
-	public EntityBullet(World world, EntityLiving entity, double dx, double dy, double dz, float accuracy, ItemStack itemBullet) {
+	public EntityBullet(World world, EntityLivingBase entity, double dx, double dy, double dz, float accuracy, ItemStack itemBullet) {
 		super(world);
 		setSize(0.2F, 0.2F);
 		setLocationAndAngles(entity.posX, entity.posY + 10, entity.posZ, entity.rotationYaw, entity.rotationPitch);
@@ -82,7 +82,7 @@ public class EntityBullet extends EntityThrowable {
 					}
 
 					if (Block.torchWood.canPlaceBlockAt(this.worldObj, x, y, z) && this.worldObj.isAirBlock(x, y, z)) {
-						if (this.worldObj.setBlockAndMetadataWithNotify(x, y, z, Block.torchWood.blockID, 0, 3) == false) {
+						if (this.worldObj.setBlock(x, y, z, Block.torchWood.blockID, 0, 3) == false) {
 							this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, x, y, z, item));
 						}
 					} else {
@@ -95,7 +95,7 @@ public class EntityBullet extends EntityThrowable {
 						if (Block.blocksList[blockId].getBlockHardness(this.worldObj, x, y, z) >= 0.0F) {
 							int metadata = this.worldObj.getBlockMetadata(x, y, z);
 							Block.blocksList[blockId].dropBlockAsItem(worldObj, x, y, z, metadata, 0);
-							this.worldObj.setBlockAndMetadataWithNotify(x, y, z, 0, 0, 3);
+							this.worldObj.setBlock(x, y, z, 0, 0, 3);
 						}
 					}
 				}
